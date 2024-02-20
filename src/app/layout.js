@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <Link href="/pages/hosts">Hosts</Link>
         <UserButton afterSignOutUrl='/'/>
     </nav>
-      <body className={inter.className}>{children}</body>
+      <body>{children}</body>
     </html>
     </ClerkProvider>
   );
