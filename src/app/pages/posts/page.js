@@ -32,7 +32,7 @@ export default async function RoomsLists() {
               homeImages={imagesForRoom.map((image) => image.url_image)}
             />
             <p>{room.price}</p>
-            <Link href="">Reed more...</Link>
+            <Link href="">Read more...</Link>
           </div>
         );
       })}

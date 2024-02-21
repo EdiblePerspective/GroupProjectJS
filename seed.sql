@@ -1,4 +1,5 @@
 
+
 CREATE TABLE users_hosts
 (
   id SERIAL PRIMARY KEY,
