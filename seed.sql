@@ -12,19 +12,6 @@ CREATE TABLE users_hosts
   description VARCHAR,
   profile_image VARCHAR
 );
-CREATE TABLE rooms
-(
-  id SERIAL PRIMARY KEY,
-  hoome_type VARCHAR,
-  total_occupancy VARCHAR,
-  total_rooms VARCHAR,
-  summary VARCHAR,
-  address VARCHAR,
-  price VARCHAR,
-  published_at DATETIME,
-  owner_id INT REFERENCES users_hosts (id),
-  updated_at DATETIME
-);
 
 CREATE TABLE reservations
 (
