@@ -1,3 +1,4 @@
+
 import { clerkClient } from '@clerk/nextjs';
 import { db } from "@/db";
 import { useUser } from "@clerk/nextjs";
@@ -15,6 +16,7 @@ export default async function HostUser() {
       <p>Hello {user.fullName}!</p>
       <div></div>
       </div>
+
       
   }
  
