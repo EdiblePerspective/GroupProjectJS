@@ -20,7 +20,7 @@ CREATE TABLE rooms
   total_occupancy VARCHAR,
   total_rooms VARCHAR,
   summary VARCHAR,
-  v VARCHAR,
+  address VARCHAR,
   price VARCHAR,
   published_at DATETIME,
   owner_id INT REFERENCES users_hosts (id),
@@ -52,7 +52,7 @@ CREATE TABLE reviews (
 CREATE TABLE media (
     id SERIAL PRIMARY KEY,
     url_image TEXT,
-    image_id INTEGER REFERENCES rooms (id),
+    room_id INTEGER REFERENCES rooms (id),
 );
 image_id INTEGER REFERENCES rooms, reservations (id),
 
@@ -62,6 +62,7 @@ VALUES
   ('Apartment', '4', '2', 'Cozy apartment with city view', '123 Main St, City, Country', '100', '2024-02-08 12:00:00', 1, '2024-02-08 12:00:00'),
   ('House', '6', '3', 'Spacious house with garden', '456 Elm St, Town, Country', '200', '2024-02-08 12:00:00', 2, '2024-02-08 12:00:00'),
   ('Condo', '2', '1', 'Modern condo in downtown area', '789 Oak St, Village, Country', '150', '2024-02-08 12:00:00', 3, '2024-02-08 12:00:00');
+
 
 
 
