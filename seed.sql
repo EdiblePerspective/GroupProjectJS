@@ -19,7 +19,7 @@ CREATE TABLE rooms
   total_occupancy VARCHAR,
   total_rooms VARCHAR,
   summary VARCHAR,
-  v VARCHAR,
+  address VARCHAR,
   price VARCHAR,
   published_at DATETIME,
   owner_id INT REFERENCES users_hosts (id),
@@ -51,7 +51,7 @@ CREATE TABLE reviews (
 CREATE TABLE media (
     id SERIAL PRIMARY KEY,
     url_image TEXT,
-    image_id INTEGER REFERENCES rooms (id),
+    room_id INTEGER REFERENCES rooms (id),
 );
 image_id INTEGER REFERENCES rooms, reservations (id),
 
