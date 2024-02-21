@@ -35,6 +35,7 @@ export default function RootLayout({ children }) {
         <UserButton afterSignOutUrl='/'/>
     </nav>
       {/* <body className={inter.className}>{children}</body> */}
+      <body>{children}</body>
     </html>
     </ClerkProvider>
   );
