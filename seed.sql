@@ -18,7 +18,7 @@ CREATE TABLE rooms
   total_occupancy VARCHAR,
   total_rooms VARCHAR,
   summary VARCHAR,
-  address VARCHAR,
+  v VARCHAR,
   price VARCHAR,
   published_at DATETIME,
   owner_id INT REFERENCES users_hosts (id),
