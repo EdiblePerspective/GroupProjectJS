@@ -27,15 +27,14 @@ export default function RootLayout({ children }) {
     </div>
     </>
     <Footer />
-    </body>
     <nav>
         {/* <Link href="/">Home</Link>
         <Link href="/pages/posts">Postings</Link>
         <Link href="/pages/hosts">Hosts</Link> */}
         <UserButton afterSignOutUrl='/'/>
     </nav>
-      {/* <body className={inter.className}>{children}</body> */}
-      <body>{children}</body>
+    </body>
+
     </html>
     </ClerkProvider>
   );
