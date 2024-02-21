@@ -2,6 +2,12 @@ import { ClerkProvider } from '@clerk/nextjs'
 import Link from "next/link"
 import { UserButton } from "@clerk/nextjs";
 import "./globals.css";
+import { Inter } from "next/font/google";
+import NavMenu from "../components/NavMenu";
+import Footer from '@/components/Footer';
+import Header from '@/components/Header';
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -12,13 +18,23 @@ export default function RootLayout({ children }) {
   return (
     <ClerkProvider>
     <html lang="en">
+    <body className={inter.className}>
+    <>
+    <Header />
+    <NavMenu />
+    <div id="wrapper">
+      {children}
+    </div>
+    </>
+    <Footer />
     <nav>
-        <Link href="/">Home</Link>
+        {/* <Link href="/">Home</Link>
         <Link href="/pages/posts">Postings</Link>
-        <Link href="/pages/hosts">Hosts</Link>
+        <Link href="/pages/hosts">Hosts</Link> */}
         <UserButton afterSignOutUrl='/'/>
     </nav>
-      <body>{children}</body>
+    </body>
+
     </html>
     </ClerkProvider>
   );
