@@ -56,16 +56,17 @@ export default async function HostPage() {
           return (
             <div key={room.id}>
               <h4>{room.hoome_type}</h4>
-
-              <SlideHomes
-                homeImages={imagesForRoom.map((image) => image.url_image)}
-              />
-
+              <div>
+                <SlideHomes
+                  homeImages={imagesForRoom.map((image) => image.url_image)}
+                />
+              </div>
               <p>{room.price}</p>
-              <Link href={`/pages/hosts/hostpage/${room.id}`}>
+              <Link href={`/pages/hosts/hostpage/${singleHost.id}/${room.id}`}>
                 Read more...
               </Link>
-              <Link href="">Read more...</Link>
+
+              {/* <Link href="">Read more...</Link> */}
             </div>
           );
         })}
