@@ -24,7 +24,6 @@ export default function RootLayout({ children }) {
             <NavMenu />
             <div id="wrapper">{children}</div>
           </>
-          <Footer />
           <nav>
             {/* <Link href="/">Home</Link>
         <Link href="/pages/posts">Postings</Link>
@@ -32,6 +31,7 @@ export default function RootLayout({ children }) {
             <UserButton afterSignOutUrl="/" />
           </nav>
         </body>
+        <Footer />
       </html>
     </ClerkProvider>
   );

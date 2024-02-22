@@ -195,14 +195,6 @@ const NavigationMenuContent = StyledContent;
 const NavigationMenuViewport = StyledViewport;
 const NavigationMenuIndicator = StyledIndicatorWithArrow;
 
-/*
-  Three types of dropdown menu are defined here.
-  gridTemplateRows is the minimum number of sub-menu links.
-  For example, if a default number of three is set, 3 positions are set aside.
-  This will leave a third gap if only two are present. However, the number
-  is not a maximum, so will not limit the number of items that the sub-menu
-  will display.
-*/
 const ContentList = styled('ul', {
   display: 'grid',
   padding: 22,
@@ -324,11 +316,11 @@ export const NavigationMenuDemo = () => {
       <NavigationMenuList>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+          <NavigationMenuTrigger>About</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ContentList layout="one">
               <ContentListItemCallout />
-              <ContentListItem href="/home">
+              <ContentListItem href="/pages/posts">
                 Enter something here.
               </ContentListItem>
 
@@ -340,9 +332,10 @@ export const NavigationMenuDemo = () => {
           <NavigationMenuTrigger>Posts</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ContentList layout="two">
-              <ContentListItem title="Posting" href="/pages/posts">
+              <ContentListItem title="Posting" href="/pages/posts/page">
                 The products here.
               </ContentListItem>
+
             </ContentList>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -352,8 +345,12 @@ export const NavigationMenuDemo = () => {
           <NavigationMenuContent>
             <ContentList layout="three">
               <ContentListItem
-                title="Hosting products here" href="/pages/hosts">
+                title="Hosting products here" href="/pages/hosts/hostpage">
                 Here is the hosting pages.
+              </ContentListItem>
+
+              <ContentListItem title="Create Profile" href="/pages/hosts/createHostProfile">
+                The original crowd pleaser.
               </ContentListItem>
 
             </ContentList>

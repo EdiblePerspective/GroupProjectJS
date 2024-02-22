@@ -1,8 +1,12 @@
 
 export default function Home() {
   return (
-    <main>
-      
-    </main>
+    <div>
+      <h2>Welcome to our rental</h2>
+
+      <p>Here is some content for our house rental concept.
+      </p>
+    </div>
   );
 }
+
