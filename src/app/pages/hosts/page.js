@@ -3,6 +3,10 @@ import { db } from "@/db";
 import Link from "next/link";
 import SlideHomes from "@/components/SlideHomes";
 import { revalidatePath } from "next/cache";
+
+import "./hosts.css";
+import { redirect } from 'next/navigation'
+
 // import { redirect } from "next/navigation";
 // import EditProfileButton from "../../components/EditProfileButton";
 
@@ -14,13 +18,17 @@ export default async function HostPage() {
   FROM users_hosts
   WHERE clecks_user_id = $1
 `;
-
   const hostResult = await db.query(queryText, [userId]);
   // let hostResult =
   //   await db.query`SELECT * FROM users_hosts WHERE users_hosts.clecks_user_id = ${userId}`;
   let singleHost = hostResult.rows[0];
   console.log("host", singleHost);
-
+  const hostResult = await db.query(queryText, [userId]);
+  // let hostResult =
+  //   await db.query`SELECT * FROM users_hosts WHERE users_hosts.clecks_user_id = ${userId}`;
+  let singleHost = hostResult.rows[0];
+  console.log("host", singleHost);
+  if (singleHost==null){redirect('/pages/hosts/createHostProfile')}
   const queryText1 = `
   SELECT *
   FROM rooms
@@ -35,17 +43,32 @@ export default async function HostPage() {
   }
   return (
     <div className="profileContainer">
-      <div className="leftPanel">
-        <h2>{singleHost.name}</h2>
-        <img src={singleHost.profile_image} className="profileImage" />
+      <div className="bioCon">
+        <div className="leftPanel ">
+          <h2 className="nameTitle">{singleHost.name}</h2>
+          <img
+            src={singleHost.profile_image}
+            className="profileImage profileClass"
+            alt="profile Image"
+          />
+        </div>
+        <div className="rightPanel ">
+          <p className="bio">
+            {" "}
+            Email: {singleHost.email}
+          </p>
+          <p className="bio">
+            {" "}
+            Phone: {singleHost.phone_number}
+          </p>
+          <p className="bio">
+            {" "}
+            description: {singleHost.description}
+          </p>
+        </div>
       </div>
-      <div className="rightPanel">
-        <p className="bio"> Email: {singleHost.email}</p>
-        <p className="bio"> Phone: {singleHost.phone_number}</p>
-        <p className="bio"> description: {singleHost.description}</p>
-      </div>
-      <Link href={`/pages/hosts/hostpage/${singleHost.id}/addHome`}>
-        Add Home
+      <Link href={`/pages/hosts/${singleHost.id}/addHome`} className="linkText">
+        Add Posting
       </Link>
       <div>
         {roomsResult.rows.map((room) => {
@@ -55,18 +78,18 @@ export default async function HostPage() {
           console.log("image2", imagesForRoom, room.id);
           return (
             <div key={room.id}>
-              <h4>{room.hoome_type}</h4>
-              <div>
-                <SlideHomes
-                  homeImages={imagesForRoom.map((image) => image.url_image)}
-                />
-              </div>
+
+              <h3>{room.hoome_type}</h3>
+
+              <SlideHomes
+                homeImages={imagesForRoom.map((image) => image.url_image)}
+              />
+
               <p>{room.price}</p>
-              <Link href={`/pages/hosts/hostpage/${singleHost.id}/${room.id}`}>
+              <Link href={`/pages/hosts/hostpage/${room.id}`}>
                 Read more...
               </Link>
-
-              {/* <Link href="">Read more...</Link> */}
+              <Link href="">Read more...</Link>
             </div>
           );
         })}

@@ -1,0 +1,12 @@
+form{
+    display:flex;
+    flex-flow: column nowrap;
+    margin: 3px;
+font-weight: bolder;
+color: black;
+align-content: space-between;
+}
+label{
+    margin: 20px;
+    padding: 20px;
+}

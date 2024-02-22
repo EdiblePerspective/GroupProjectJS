@@ -7,6 +7,7 @@ import { CaretDownIcon } from '@radix-ui/react-icons';
 import { purple, iris, blackA } from '@radix-ui/colors';
 
 
+
 const enterFromRight = keyframes({
   from: { transform: 'translateX(200px)', opacity: 0 },
   to: { transform: 'translateX(0)', opacity: 1 },
@@ -104,6 +105,7 @@ const StyledTriggerWithCaret = React.forwardRef(({ children, ...props }, forward
     <StyledCaret aria-hidden />
   </StyledTrigger>
 ));
+StyledTriggerWithCaret.displayName = 'StyledTriggerWithCaret';
 
 const StyledLink = styled(NavigationMenuPrimitive.Link, {
   ...itemStyles,
@@ -160,7 +162,7 @@ const StyledIndicatorWithArrow = React.forwardRef((props, forwardedRef) => (
     <StyledArrow />
   </StyledIndicator>
 ));
-
+StyledIndicatorWithArrow.displayName = 'StyledIndicatorWithArrow';
 const StyledViewport = styled(NavigationMenuPrimitive.Viewport, {
   position: 'relative',
   transformOrigin: 'top center',
@@ -195,14 +197,6 @@ const NavigationMenuContent = StyledContent;
 const NavigationMenuViewport = StyledViewport;
 const NavigationMenuIndicator = StyledIndicatorWithArrow;
 
-/*
-  Three types of dropdown menu are defined here.
-  gridTemplateRows is the minimum number of sub-menu links.
-  For example, if a default number of three is set, 3 positions are set aside.
-  This will leave a third gap if only two are present. However, the number
-  is not a maximum, so will not limit the number of items that the sub-menu
-  will display.
-*/
 const ContentList = styled('ul', {
   display: 'grid',
   padding: 22,
@@ -267,7 +261,7 @@ const ContentListItem = React.forwardRef(({ children, title, ...props }, forward
     </NavigationMenuLink>
   </ListItem>
 ));
-
+ContentListItem.displayName = 'ContentListItem';
 const ContentListItemCallout = React.forwardRef(({ children, ...props }, forwardedRef) => (
   <ListItem css={{ gridRow: 'span 3' }}>
     <NavigationMenuLink
@@ -307,7 +301,7 @@ const ContentListItemCallout = React.forwardRef(({ children, ...props }, forward
     </NavigationMenuLink>
   </ListItem>
 ));
-
+ContentListItemCallout.displayName = 'ContentListItemCallout';
 const ViewportPosition = styled('div', {
   position: 'absolute',
   display: 'flex',
@@ -324,11 +318,11 @@ export const NavigationMenuDemo = () => {
       <NavigationMenuList>
 
         <NavigationMenuItem>
-          <NavigationMenuTrigger>Home</NavigationMenuTrigger>
+          <NavigationMenuTrigger>About</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ContentList layout="one">
               <ContentListItemCallout />
-              <ContentListItem href="/home">
+              <ContentListItem href="/pages/posts">
                 Enter something here.
               </ContentListItem>
 
@@ -340,9 +334,10 @@ export const NavigationMenuDemo = () => {
           <NavigationMenuTrigger>Posts</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ContentList layout="two">
-              <ContentListItem title="Posting" href="/pages/posts">
+              <ContentListItem title="Posting" href="/pages/posts/page">
                 The products here.
               </ContentListItem>
+
             </ContentList>
           </NavigationMenuContent>
         </NavigationMenuItem>
@@ -352,8 +347,12 @@ export const NavigationMenuDemo = () => {
           <NavigationMenuContent>
             <ContentList layout="three">
               <ContentListItem
-                title="Hosting products here" href="/pages/hosts">
+                title="Hosting products here" href="/pages/hosts/hostpage">
                 Here is the hosting pages.
+              </ContentListItem>
+
+              <ContentListItem title="Create Profile" href="/pages/hosts/createHostProfile">
+                The original crowd pleaser.
               </ContentListItem>
 
             </ContentList>
@@ -369,4 +368,5 @@ export const NavigationMenuDemo = () => {
     </NavigationMenu>
   );
 };
+
 export default NavigationMenuDemo;
