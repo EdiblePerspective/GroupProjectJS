@@ -37,7 +37,7 @@ export default async function HostPage() {
     <div className="profileContainer">
       <div className="leftPanel">
         <h2>{singleHost.name}</h2>
-        <img src={singleHost.profile_image} className="profileImage" />
+        <img src={singleHost.profile_image} className="profileImage" alt="profile Image" />
       </div>
       <div className="rightPanel">
         <p className="bio"> Email: {singleHost.email}</p>
