@@ -369,4 +369,5 @@ export const NavigationMenuDemo = () => {
     </NavigationMenu>
   );
 };
+
 export default NavigationMenuDemo;
