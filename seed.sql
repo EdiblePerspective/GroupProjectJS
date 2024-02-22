@@ -6,9 +6,7 @@ CREATE TABLE users_hosts
   clecks_user_id TEXT,
   name TEXT,
   email TEXT,
-  password VARCHAR,
   created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW(),
   phone_number VARCHAR,
   description VARCHAR,
   profile_image VARCHAR

@@ -2,12 +2,10 @@ import { db } from "@/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
+
 import SaveHomeButton from "@/components/SaveHomeButton";
-export default async function AddHome() {
-  const { userId } = auth();
-  const profileRes =
-    await db.query`SELECT * FROM users_hosts WHERE clerk_user_id = ${userId}`;
-  console.log("id:", profileRes.rows[0].id);
+export default async function AddHome({ params }) {
+  console.log("params", params.hostId);
   async function handleAddRoom(formData) {
     "use server";
     // get the comment from our formData object
@@ -18,8 +16,8 @@ export default async function AddHome() {
     const address = formData.get("address");
     const price = formData.get("price");
     const url_image = formData.get("url_image");
-    const homeId = await db.query.query(
-      `INSERT INTO profile_recipes (hoome_type, total_occupancy, total_rooms, summary, address, price,  owner_id) VALUES ($1, $2, $3, $4) RETURNING id`,
+    const homeIdResult = await db.query(
+      `INSERT INTO rooms (hoome_type, total_occupancy, total_rooms, summary, address, price,  owner_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING id`,
       [
         hoome_type,
         total_occupancy,
@@ -27,13 +25,15 @@ export default async function AddHome() {
         summary,
         address,
         price,
-        profileRes.rows[0].id,
+        params.hostId,
       ]
     );
-    await db.query.query(
-      `INSERT INTO media (url_image, room_id) VALUES ($1, $2)`,
-      [url_image, homeId.rows[0]]
-    );
+    const homeId = homeIdResult.rows[0].id;
+
+    await db.query(`INSERT INTO media (url_image, room_id) VALUES ($1, $2)`, [
+      url_image,
+      homeId,
+    ]);
 
     // revalidate the path so the new item shows
     revalidatePath(`/`);
@@ -49,8 +49,8 @@ export default async function AddHome() {
         <div className="mb-4">
           <label htmlFor="hoome_type">hoome_type</label>
           <input
-            name="type of Home"
-            id="name"
+            name="hoome_type"
+            id="hoome_type "
             placeholder="type of Home"
             required
           />
