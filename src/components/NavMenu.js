@@ -7,6 +7,7 @@ import { CaretDownIcon } from '@radix-ui/react-icons';
 import { purple, iris, blackA } from '@radix-ui/colors';
 
 
+
 const enterFromRight = keyframes({
   from: { transform: 'translateX(200px)', opacity: 0 },
   to: { transform: 'translateX(0)', opacity: 1 },
@@ -104,6 +105,7 @@ const StyledTriggerWithCaret = React.forwardRef(({ children, ...props }, forward
     <StyledCaret aria-hidden />
   </StyledTrigger>
 ));
+StyledTriggerWithCaret.displayName = 'StyledTriggerWithCaret';
 
 const StyledLink = styled(NavigationMenuPrimitive.Link, {
   ...itemStyles,
@@ -160,7 +162,7 @@ const StyledIndicatorWithArrow = React.forwardRef((props, forwardedRef) => (
     <StyledArrow />
   </StyledIndicator>
 ));
-
+StyledIndicatorWithArrow.displayName = 'StyledIndicatorWithArrow';
 const StyledViewport = styled(NavigationMenuPrimitive.Viewport, {
   position: 'relative',
   transformOrigin: 'top center',
@@ -267,7 +269,7 @@ const ContentListItem = React.forwardRef(({ children, title, ...props }, forward
     </NavigationMenuLink>
   </ListItem>
 ));
-
+ContentListItem.displayName = 'ContentListItem';
 const ContentListItemCallout = React.forwardRef(({ children, ...props }, forwardedRef) => (
   <ListItem css={{ gridRow: 'span 3' }}>
     <NavigationMenuLink
@@ -307,7 +309,7 @@ const ContentListItemCallout = React.forwardRef(({ children, ...props }, forward
     </NavigationMenuLink>
   </ListItem>
 ));
-
+ContentListItemCallout.displayName = 'ContentListItemCallout';
 const ViewportPosition = styled('div', {
   position: 'absolute',
   display: 'flex',
