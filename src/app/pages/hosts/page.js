@@ -1,10 +1,6 @@
 import HostUserAsync from "@/components/HostUserAsync";
 export default function HostUser() {
-  return (
-    <div>
-      <HostUserAsync />
-    </div>
-  );
+  return <div>{/* <HostUserAsync /> */}</div>;
 }
 //list of products
 //add/remove product

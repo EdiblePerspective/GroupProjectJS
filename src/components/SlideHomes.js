@@ -4,6 +4,7 @@ import { Slide } from "react-slideshow-image";
 import "react-slideshow-image/dist/styles.css";
 
 export default function SlideHomes({ homeImages }) {
+  console.log("image4", homeImages);
   return (
     <Slide>
       <div className="each-slide-effect">
