@@ -334,7 +334,7 @@ export const NavigationMenuDemo = () => {
           <NavigationMenuTrigger>Posts</NavigationMenuTrigger>
           <NavigationMenuContent>
             <ContentList layout="two">
-              <ContentListItem title="Posting" href="/pages/posts/page">
+              <ContentListItem title="Posting" href="/pages/posts">
                 The products here.
               </ContentListItem>
 
@@ -347,7 +347,7 @@ export const NavigationMenuDemo = () => {
           <NavigationMenuContent>
             <ContentList layout="three">
               <ContentListItem
-                title="Hosting products here" href="/pages/hosts/hostpage">
+                title="Hosting products here" href="/pages/hosts">
                 Here is the hosting pages.
               </ContentListItem>
 
