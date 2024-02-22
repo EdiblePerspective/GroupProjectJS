@@ -18,9 +18,9 @@ CREATE TABLE rooms
   summary VARCHAR,
   address VARCHAR,
   price VARCHAR,
-  published_at DATETIME,
+  published_at TIMESTAMP DEFAULT NOW(),
   owner_id INT REFERENCES users_hosts (id),
-  updated_at DATETIME
+  updated_at TIMESTAMP DEFAULT NOW()
 );
 
 CREATE TABLE reservations
@@ -32,8 +32,8 @@ CREATE TABLE reservations
   end_date DATE,
   price INT,
   total INT,
-  created_at DATE,
-  updated_at DATE
+  created_at TIMESTAMP DEFAULT NOW(),
+  updated_at TIMESTAMP DEFAULT NOW()
 );
 
 
@@ -42,23 +42,11 @@ CREATE TABLE reviews (
     id SERIAL PRIMARY KEY,
     room_id INT REFERENCES rooms (id),
     rating INT,
-    comment TEXT,
+    comment TEXT
 );
 
 CREATE TABLE media (
     id SERIAL PRIMARY KEY,
     url_image TEXT,
-    room_id INTEGER REFERENCES rooms (id),
+    room_id INTEGER REFERENCES rooms (id)
 );
-
-
-
-
-
-
-
-
-
-
-
-
