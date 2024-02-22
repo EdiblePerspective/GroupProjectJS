@@ -3,7 +3,7 @@ import Link from "next/link";
 import { UserButton } from "@clerk/nextjs";
 import "./globals.css";
 import { Inter } from "next/font/google";
-import NavMenu from "../components/NavMenu";
+import NavigationMenuDemo from "../components/NavMenu";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
         <body className={inter.className}>
           <>
             <Header />
-            <NavMenu />
+            <NavigationMenuDemo />
             <div id="wrapper">{children}</div>
           </>
           <Footer />
