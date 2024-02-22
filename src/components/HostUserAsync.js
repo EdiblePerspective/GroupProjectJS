@@ -1,7 +1,7 @@
-import { useUser } from "@clerk/nextjs";
-import { db } from "@/db";
+import { auth } from "@clerk/nextjs";
+import { db } from "@/db"; //server actions library, import function
 export default async function HostUserAsync() {
-  const { isSignedIn, user, isLoaded } = useUser();
+  //const { isSignedIn, user, isLoaded } = useUser();
   const hostId = await db.query(
     `SELECT id FROM users_hosts WHERE clecks_user_id = ${user.id} `
   );
