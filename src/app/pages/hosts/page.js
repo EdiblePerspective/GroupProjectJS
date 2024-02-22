@@ -84,7 +84,7 @@ export default async function HostPage() {
               <Link href={`/pages/hosts/hostpage/${room.id}`}>
                 Read more...
               </Link>
-              <Link href="">Read more...</Link>
+              
             </div>
           );
         })}

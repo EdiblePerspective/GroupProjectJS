@@ -3,18 +3,18 @@ import Link from "next/link";
 import SlideSingleHome from "@/components/SlideSingleHome";
 import HostName from "@/components/HostName";
 export default async function SingleHomePage({ params }) {
-  console.log("Home ID:", params.id);
+  console.log("Home ID:", params.homeId);
 
   const homeResult = await db.query(
-    `SELECT * FROM rooms WHERE rooms.id = ${params.id}`
+    `SELECT * FROM rooms WHERE rooms.id = ${params.homeId}`
   );
   const home = homeResult.rows[0];
   console.log("home:", home);
   const imagesResult = await db.query(
-    `SELECT * FROM media WHERE media.image_id = ${params.id}`
+    `SELECT * FROM media WHERE room_id = ${params.homeId}`
   );
-  const reviewsResult = await sql`SELECT * FROM reviews
-    WHERE reviews.room_id = ${params.id}`;
+  const reviewsResult = await db.query(`SELECT * FROM reviews
+    WHERE room_id = ${params.homeId}`);
 
   return (
     <div className="container">
@@ -39,7 +39,7 @@ export default async function SingleHomePage({ params }) {
           <div key={review.id + review.content} className="comment">
             <p>{review.comment}</p>
             <p>{review.rating}</p>
-            <Link href={`/pages/posts/comments/${params.id}/rating`}>
+            <Link href={`/pages/posts/comments/${params.homeId}/rating`}>
               Rate this Home
             </Link>
           </div>

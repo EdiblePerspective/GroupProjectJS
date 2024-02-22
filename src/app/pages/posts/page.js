@@ -36,7 +36,7 @@ export default async function RoomsLists() {
             />
 
             <p>{room.price}</p>
-            <Link href="">Read more...</Link>
+            <Link href={`/pages/posts/${room.id}`}>Read more...</Link>
           </div>
         );
       })}
