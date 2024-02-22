@@ -23,11 +23,6 @@ export default async function HostPage() {
   //   await db.query`SELECT * FROM users_hosts WHERE users_hosts.clecks_user_id = ${userId}`;
   let singleHost = hostResult.rows[0];
   console.log("host", singleHost);
-  const hostResult = await db.query(queryText, [userId]);
-  // let hostResult =
-  //   await db.query`SELECT * FROM users_hosts WHERE users_hosts.clecks_user_id = ${userId}`;
-  let singleHost = hostResult.rows[0];
-  console.log("host", singleHost);
   if (singleHost==null){redirect('/pages/hosts/createHostProfile')}
   const queryText1 = `
   SELECT *
