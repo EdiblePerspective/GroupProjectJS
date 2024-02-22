@@ -3,25 +3,29 @@ import { db } from "@/db";
 import Link from "next/link";
 import SlideHomes from "@/components/SlideHomes";
 import { revalidatePath } from "next/cache";
+
 import "./hosts.css";
 import { redirect } from 'next/navigation'
+
 // import { redirect } from "next/navigation";
 // import EditProfileButton from "../../components/EditProfileButton";
 
 export default async function HostPage() {
   const { userId } = auth();
   console.log("userIs", userId);
-
   const queryText = `
   SELECT *
   FROM users_hosts
   WHERE clecks_user_id = $1
 `;
-  
   const hostResult = await db.query(queryText, [userId]);
   // let hostResult =
   //   await db.query`SELECT * FROM users_hosts WHERE users_hosts.clecks_user_id = ${userId}`;
-  
+  let singleHost = hostResult.rows[0];
+  console.log("host", singleHost);
+  const hostResult = await db.query(queryText, [userId]);
+  // let hostResult =
+  //   await db.query`SELECT * FROM users_hosts WHERE users_hosts.clecks_user_id = ${userId}`;
   let singleHost = hostResult.rows[0];
   console.log("host", singleHost);
   if (singleHost==null){redirect('/pages/hosts/createHostProfile')}
@@ -74,6 +78,7 @@ export default async function HostPage() {
           console.log("image2", imagesForRoom, room.id);
           return (
             <div key={room.id}>
+
               <h3>{room.hoome_type}</h3>
 
               <SlideHomes

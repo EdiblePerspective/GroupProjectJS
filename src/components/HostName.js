@@ -1,9 +1,14 @@
 import { db } from "@/db";
 
 export default async function HostName({ hostId }) {
-  // console.log("id:", recipeid);
-  const hostResult = await sql`SELECT * FROM users_hosts
-    WHERE users_hosts.id = ${hostId}`;
+  console.log("id:", hostId);
+  const hostResult = await db.query(
+    "SELECT * FROM users_hosts WHERE users_hosts.id = $1",
+    [hostId]
+  );
+
+  // const hostResult = await db.query`SELECT * FROM users_hosts
+  //   WHERE users_hosts.id = ${hostId}`;
   const hostProfile = hostResult.rows[0];
 
   return (

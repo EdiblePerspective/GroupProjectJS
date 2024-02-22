@@ -21,14 +21,14 @@ export default async function RoomsLists() {
   console.log("images", roomImages);
   await delay();
   return (
-    <div>
+    <div className="rooms-wrapper">
       {rooms.rows.map((room) => {
         // Get images for the current room
         const imagesForRoom = handleImage(room.id);
 
         console.log("image1", imagesForRoom, room.id);
         return (
-          <div key={room.id}>
+          <div key={room.id} className="room-container">
             <h4>{room.hoome_type}</h4>
 
             <SlideHomes

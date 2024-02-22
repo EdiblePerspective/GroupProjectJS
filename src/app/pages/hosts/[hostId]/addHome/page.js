@@ -2,7 +2,9 @@ import { db } from "@/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
+
 import "./addHome.css"
+
 
 import SaveHomeButton from "@/components/SaveHomeButton";
 export default async function AddHome({ params }) {
@@ -116,7 +118,9 @@ export default async function AddHome({ params }) {
           </div>
         </div>
 
+
         <SaveHomeButton className="buttOne" />
+
       </form>
     </div>
   );
