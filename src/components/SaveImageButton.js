@@ -1,12 +1,12 @@
 "use client";
 import { useFormStatus } from "react-dom";
 
-export default function SaveRecipeButton() {
+export default function SaveImageButton() {
   const { pending } = useFormStatus();
 
   return (
     <button disabled={pending} className={pending ? "disabled" : ""}>
-      {pending ? "Adding your recipe" : "Save Recipe"}
+      {pending ? "Adding your Image" : "Save Image"}
     </button>
   );
 }

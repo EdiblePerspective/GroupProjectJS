@@ -3,8 +3,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { auth } from "@clerk/nextjs";
 
-import "./addHome.css"
-
+import "./addHome.css";
 
 import SaveHomeButton from "@/components/SaveHomeButton";
 export default async function AddHome({ params }) {
@@ -39,10 +38,10 @@ export default async function AddHome({ params }) {
     ]);
 
     // revalidate the path so the new item shows
-    revalidatePath(`/`);
+    revalidatePath(`/pages/hosts`);
 
     // take me to the home pagen
-    redirect(`/`);
+    redirect(`/pages/hosts`);
   }
 
   return (
@@ -118,9 +117,7 @@ export default async function AddHome({ params }) {
           </div>
         </div>
 
-
         <SaveHomeButton className="buttOne" />
-
       </form>
     </div>
   );

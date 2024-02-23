@@ -13,7 +13,9 @@ async function delay() {
 }
 
 export default async function RoomsLists() {
-  const rooms = await db.query(`SELECT * FROM rooms`);
+  const rooms = await db.query(
+    `SELECT * FROM rooms WHERE hoome_type ILIKE '%cottage%'`
+  );
   const roomImages = await db.query(`SELECT * FROM media`);
   function handleImage(homeId) {
     return roomImages.rows.filter((image) => image.room_id === homeId);
@@ -39,7 +41,6 @@ export default async function RoomsLists() {
             <Link href={`/pages/posts/${room.id}`} className="read-more-link">
               Read more...
             </Link>
-
           </div>
         );
       })}

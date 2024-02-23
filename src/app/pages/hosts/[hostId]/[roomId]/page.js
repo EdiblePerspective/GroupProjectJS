@@ -28,32 +28,28 @@ export default async function SingleHomePage({ params }) {
         />
       </div>
       <div>
-        <p className="recipeInfoptag">{home.total_occupancy}</p>
-        <p className="recipeInfoptag">{home.total_rooms}</p>
+        <p className="recipeInfoptag">{home.total_occupancy} guest</p>
+        <p className="recipeInfoptag">{home.total_rooms} rooms</p>
         <p className="recipeInfoptag">{home.summary}</p>
-        <p className="recipeInfoptag">{home.address}</p>
-        <p className="recipeInfoptag">{home.price}</p>
-        <p className="recipeInfoptag">{home.address}</p>
+        <p className="recipeInfoptag">Adress: {home.address}</p>
+        <p className="recipeInfoptag">{home.price}£ a night</p>
+
         <p>My Contact:</p>
         <HostName hostId={home.owner_id} />
       </div>
-      <div>
+      <div className="button-container">
         <Link
-          href={`/pages/hosts/hostpage/${params.hostId}/${params.roomId}/addImage`}
+          href={`/pages/hosts/${params.hostId}/${params.roomId}/addImage`}
+          className="button-link"
         >
           Add More Images
         </Link>
-      </div>
-      <div className="reviews-container">
-        {reviewsResult.rows.map((review) => (
-          <div key={review.id + review.content} className="comment">
-            <p>{review.comment}</p>
-            <p>{review.rating}</p>
-            <Link href={`/pages/posts/comments/${params.roomId}/rating`}>
-              Rate this Home
-            </Link>
-          </div>
-        ))}
+        <Link href="" className="button-link">
+          Edit this Host
+        </Link>
+        <Link href="" className="button-link">
+          Delete this Host
+        </Link>
       </div>
     </div>
   );

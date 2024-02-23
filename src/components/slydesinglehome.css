@@ -4,8 +4,11 @@
   justify-content: center;
   background-size: cover;
   height: 350px;
+  width: 500px !important;
 }
-
+.react-slideshow-container {
+  width: 500px !important;
+}
 .each-slide-effect span {
   padding: 20px;
   font-size: 20px;

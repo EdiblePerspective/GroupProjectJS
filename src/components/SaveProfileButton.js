@@ -6,7 +6,7 @@ export default function SaveProfileButton() {
 
   return (
     <button disabled={pending} className={pending ? "disabled" : ""}>
-      {pending ? "Adding your recipe" : "Save Recipe"}
+      {pending ? "Adding your profile" : "Save Profile"}
     </button>
   );
 }

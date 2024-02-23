@@ -1,8 +1,7 @@
 export default function Footer() {
-
   return (
-    <div>
+    <footer>
       <h4>&copy; No Copywright</h4>
-    </div>
+    </footer>
   );
 }
