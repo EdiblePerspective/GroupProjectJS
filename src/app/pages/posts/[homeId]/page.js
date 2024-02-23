@@ -4,23 +4,27 @@ import SlideSingleHome from "@/components/SlideSingleHome";
 import HostName from "@/components/HostName";
 export default async function SingleHomePage({ params }) {
   console.log("Home ID:", params.homeId);
-
-  const homeResult = await db.query(
-    `SELECT * FROM rooms WHERE rooms.id = ${params.homeId}`
-  );
-  const home = homeResult.rows[0];
-  console.log("home:", home);
-  const imagesResult = await db.query(
-
-    `SELECT * FROM media WHERE media.room_id = ${params.homeId}`
-  );
-  // const reviewsResult = await db.query`SELECT * FROM reviews
-  //   WHERE reviews.room_id = ${params.homeId}`;
-  const reviewsResult = await db.query(
-    "SELECT * FROM reviews WHERE reviews.room_id = $1",
-    [params.homeId]
-  );
-
+  let home;
+  let imagesResult;
+  let reviewsResult;
+  try {
+    const homeResult = await db.query(
+      `SELECT * FROM rooms WHERE rooms.id = ${params.homeId}`
+    );
+    home = homeResult.rows[0];
+    console.log("home:", home);
+    imagesResult = await db.query(
+      `SELECT * FROM media WHERE media.room_id = ${params.homeId}`
+    );
+    // const reviewsResult = await db.query`SELECT * FROM reviews
+    //   WHERE reviews.room_id = ${params.homeId}`;
+    reviewsResult = await db.query(
+      "SELECT * FROM reviews WHERE reviews.room_id = $1",
+      [params.homeId]
+    );
+  } catch (error) {
+    console.log(error);
+  }
 
   return (
     <div className="container">
@@ -62,7 +66,6 @@ export default async function SingleHomePage({ params }) {
           <p>Cntact the owner for Booking information:</p>
           <HostName hostId={home.owner_id} />
         </div>
-
       </div>
     </div>
   );
