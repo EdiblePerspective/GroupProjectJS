@@ -39,6 +39,7 @@ export default async function RoomsLists() {
             <Link href={`/pages/posts/${room.id}`} className="read-more-link">
               Read more...
             </Link>
+
           </div>
         );
       })}
