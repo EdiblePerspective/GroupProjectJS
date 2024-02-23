@@ -2,6 +2,7 @@ import { db } from "@/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import SaveImageButton from "@/components/SaveImageButton";
+import Link from "next/link";
 export default async function AddImage({ params }) {
   console.log("params", params);
   async function handleAddImage(formData) {
@@ -14,10 +15,10 @@ export default async function AddImage({ params }) {
     ]);
 
     // revalidate the path so the new item shows
-    revalidatePath(`/pages/hosts/hostpage/${params.hostId}/${params.roomId}`);
+    revalidatePath(`/pages/hosts/${params.hostId}/${params.roomId}/addImage`);
 
     // take me to the home pagen
-    redirect(`/pages/hosts/hostpage/${params.hostId}/${params.roomId}`);
+    redirect(`/pages/hosts/${params.hostId}/${params.roomId}/addImage`);
   }
 
   return (
@@ -36,6 +37,9 @@ export default async function AddImage({ params }) {
 
         <SaveImageButton />
       </form>
+      <Link href={`/pages/hosts/${params.hostId}/${params.roomId}`}>
+        Back to Host
+      </Link>
     </div>
   );
 }

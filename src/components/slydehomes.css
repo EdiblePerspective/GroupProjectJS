@@ -4,10 +4,10 @@
   justify-content: center;
   background-size: cover;
   height: 200px;
-  width: 200px;
+  width: 300px;
 }
 .react-slideshow-container {
-  width: 200px !important;
+  width: 300px !important;
 }
 .each-slide-effect span {
   padding: 20px;
